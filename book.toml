@@ -1,0 +1,13 @@
+[book]
+authors = ["hellowac"]
+language = "zh-cn"
+multilingual = false
+src = "src"
+title = "我的python笔记"
+
+[output.html]
+no-section-label = true
+
+[output.html.fold]
+enable = true
+level = 1
