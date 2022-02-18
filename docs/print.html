@@ -149,12 +149,41 @@
 <div style="break-before: page; page-break-before: always;"></div><ul>
 <li><a href="encryption/pycrypto.html#crypto">crypto</a>
 <ul>
+<li><a href="encryption/pycrypto.html#%E8%83%8C%E6%99%AF%E7%9F%A5%E8%AF%86">背景知识</a></li>
+<li><a href="encryption/pycrypto.html#python%E7%9B%B8%E5%85%B3%E5%8C%85">python相关包</a></li>
 <li><a href="encryption/pycrypto.html#%E8%80%81%E7%89%88%E6%9C%ACaes%E7%9A%84ecb%E6%A8%A1%E5%9E%8B%E5%8A%A0%E5%AF%86%E7%A4%BA%E4%BE%8B">老版本AES的ECB模型加密示例</a></li>
 <li><a href="encryption/pycrypto.html#%E4%BD%BF%E7%94%A8cryptography%E8%BF%9B%E8%A1%8Caes-256-ecb%E5%8A%A0%E5%AF%86">使用cryptography进行AES-256-ECB加密</a></li>
 </ul>
 </li>
 </ul>
 <h1 id="crypto"><a class="header" href="#crypto">crypto</a></h1>
+<h2 id="背景知识"><a class="header" href="#背景知识">背景知识</a></h2>
+<ul>
+<li>
+<p>（1）<strong>AES</strong> 是高级加密标准(<strong>Advanced Encryption Standard</strong>)的缩写，<strong>AES</strong> 是最常见的对称加密算法。</p>
+<blockquote>
+<p><strong>对称加密算法</strong> 也就是<code>加密</code>和<code>解密</code>用相同的密钥，同一个秘钥即用来加密，也用来解密。</p>
+</blockquote>
+<p>关于加密解密的原理可以搜索一下相关的文章。</p>
+<blockquote>
+<p><strong>RSA</strong> 是一种典型的<code>非对称密钥密码</code>体制，从<code>加密密钥</code>和<code>解密密钥</code>中的任何一个推导出另一个在计算上是不可行的。<code>RSA</code>的安全性建立在 <strong>“大数分解和素性检测”</strong> 这一著名数论难题的基础上。</p>
+<p>公钥对可以完全公开，不需要进行保密，但必须提供完整性检测机制以保证不受篡改；</p>
+<p>私钥由用户自己保存。通信双方无需实现交换密钥就可以进行保密通信。</p>
+</blockquote>
+</li>
+<li>
+<p>（2）RSA密码体制算法如下：</p>
+<p>由用户选择两个互异并且距离较远的大素数<code>p</code>和<code>q</code>；</p>
+<p>计算<code>n=p×q</code>和<code>f(n)=(p-1)×(q-1)</code>；</p>
+<p>选择正整数<code>e</code>，使其与<code>f(n)</code>的最大公约数为<code>1</code>；</p>
+<p>然后计算正整数<code>d</code>，使得<code>e × d</code>对<code>f(n)</code>的余数为<code>1</code>，即<code>e×d≡1 mod f(n)</code>，最后销毁<code>p</code>和<code>q</code>。</p>
+<p>经过以上步骤，得出公钥对<code>(n,e)</code>和私钥对<code>(n,d)</code>。</p>
+<p>设<code>M</code>为明文，<code>C</code>为对应的密文，</p>
+<p>则加密变换为：<code>C=M^e mod n</code>；</p>
+<p>解密变换为：<code>M=C^d mod n</code>。</p>
+</li>
+</ul>
+<h2 id="python相关包"><a class="header" href="#python相关包">python相关包</a></h2>
 <blockquote>
 <p><strong>Python 密码学工具包 (pycrypto)</strong></p>
 <p>pycrypto pypi: <a href="https://pypi.org/project/pycrypto/">https://pypi.org/project/pycrypto/</a></p>
