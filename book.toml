@@ -5,6 +5,9 @@ multilingual = false
 src = "src"
 title = "我的python笔记"
 
+[build]
+build-dir = "docs"
+
 [output.html]
 no-section-label = true
 
