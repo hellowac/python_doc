@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Excel - 我的python笔记</title>
+        <title>WEB框架 - 我的python笔记</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="../tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item expanded "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../report/docx.html">Docx</a></li><li class="chapter-item expanded "><a href="../report/excel.html" class="active">Excel</a></li></ol></li><li class="chapter-item "><a href="../web/index.html">WEB框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web/flask/index.html">flask</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web/flask/file.html">文件</a></li></ol></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item affix "><a href="../tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../report/docx.html">Docx</a></li><li class="chapter-item "><a href="../report/excel.html">Excel</a></li></ol></li><li class="chapter-item expanded "><a href="../web/index.html" class="active">WEB框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web/flask/index.html">flask</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="../web/flask/file.html">文件</a></li></ol></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,46 +143,18 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="excel"><a class="header" href="#excel">Excel</a></h1>
-<p>Python读写Excel格式的数据参考：<a href="https://www.python-excel.org/">https://www.python-excel.org/</a></p>
-<p>以及 github 组织: <a href="https://github.com/python-excel">python-excel</a></p>
-<h2 id="在-python-中处理-excel-文件"><a class="header" href="#在-python-中处理-excel-文件">在 Python 中处理 Excel 文件</a></h2>
-<ul>
-<li><a href="https://openpyxl.readthedocs.org/">openpyxl</a>: 用于读写 Excel 2010 文件的推荐包</li>
-<li><a href="https://xlsxwriter.readthedocs.org/">xlsxwriter</a>: 用于写入数据, 格式化信息，特别是 Excel 2010 格式（即：.xlsx）的图表的替代包</li>
-<li><a href="https://github.com/willtrnr/pyxlsb">pyxlsb</a>: 读取xlsb格式的 Excel 文件.</li>
-<li><a href="https://pylightxl.readthedocs.io/en/latest/">pylightxl</a>: 读取 xlsx 和 xlsm 格式的文件，以及写入 xlsx 格式文件。</li>
-<li><a href="https://xlrd.readthedocs.io/en/latest/">xlrd</a>: 从旧 Excel 文件（即：.xls）中读取数据和格式信息</li>
-<li><a href="https://xlwt.readthedocs.io/en/latest/">xlwt</a>: 将数据和格式信息写入旧版 Excel 文件（即：.xls）</li>
-<li><a href="https://xlutils.readthedocs.io/en/latest/">xlutils</a>: 收集了需要xlrd和的实用程序xlwt，包括复制和修改或过滤现有 Excel 文件的能力。</li>
-</ul>
-<h2 id="常见问题"><a class="header" href="#常见问题">常见问题</a></h2>
-<ol>
-<li>
-<p>转换Excel的float类型的时间</p>
-<p>参考：<a href="https://stackoverflow.com/questions/32430679/how-to-read-dates-using-xlrd">https://stackoverflow.com/questions/32430679/how-to-read-dates-using-xlrd</a></p>
-<pre><code class="language-python">import datetime
-import xlrd
-
-book = xlrd.open_workbook(&quot;myexcelfile.xls&quot;)
-sh = book.sheet_by_index(0)
-a1 = sh.cell_value(rowx=0, colx=0)
-a1_as_datetime = datetime.datetime(*xlrd.xldate_as_tuple(a1, book.datemode))
-
-print 'datetime: %s' % a1_as_datetime
-</code></pre>
-</li>
-</ol>
+                        <h1 id="web框架"><a class="header" href="#web框架">WEB框架</a></h1>
+<p>这里是和 web 相关的问题学习记录</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../report/docx.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../report/excel.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../web/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                                    <a rel="next" href="../web/flask/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -192,11 +164,11 @@ print 'datetime: %s' % a1_as_datetime
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../report/docx.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../report/excel.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../web/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                    <a rel="next" href="../web/flask/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                             </nav>

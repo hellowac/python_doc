@@ -9,3 +9,6 @@
 - [报告]()
   - [Docx](./report/docx.md)
   - [Excel](./report/excel.md)
+- [WEB框架](./web/index.md)
+  - [flask](./web/flask/index.md)
+    - [文件](./web/flask/file.md)

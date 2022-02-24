@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item expanded "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item expanded "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="report/docx.html">Docx</a></li><li class="chapter-item "><a href="report/excel.html">Excel</a></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item affix "><a href="tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="report/docx.html">Docx</a></li><li class="chapter-item "><a href="report/excel.html">Excel</a></li></ol></li><li class="chapter-item "><a href="web/index.html">WEB框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/index.html">flask</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/file.html">文件</a></li></ol></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -292,6 +292,33 @@ if __name__ == '__main__':
 <li><a href="https://xlwt.readthedocs.io/en/latest/">xlwt</a>: 将数据和格式信息写入旧版 Excel 文件（即：.xls）</li>
 <li><a href="https://xlutils.readthedocs.io/en/latest/">xlutils</a>: 收集了需要xlrd和的实用程序xlwt，包括复制和修改或过滤现有 Excel 文件的能力。</li>
 </ul>
+<h2 id="常见问题"><a class="header" href="#常见问题">常见问题</a></h2>
+<ol>
+<li>
+<p>转换Excel的float类型的时间</p>
+<p>参考：<a href="https://stackoverflow.com/questions/32430679/how-to-read-dates-using-xlrd">https://stackoverflow.com/questions/32430679/how-to-read-dates-using-xlrd</a></p>
+<pre><code class="language-python">import datetime
+import xlrd
+
+book = xlrd.open_workbook(&quot;myexcelfile.xls&quot;)
+sh = book.sheet_by_index(0)
+a1 = sh.cell_value(rowx=0, colx=0)
+a1_as_datetime = datetime.datetime(*xlrd.xldate_as_tuple(a1, book.datemode))
+
+print 'datetime: %s' % a1_as_datetime
+</code></pre>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="web框架"><a class="header" href="#web框架">WEB框架</a></h1>
+<p>这里是和 web 相关的问题学习记录</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flask"><a class="header" href="#flask">flask</a></h1>
+<p>这里是和flask相关的问题学习记录。</p>
+<ul>
+<li><code>1.1.x</code> 版本的文档：<a href="https://flask.palletsprojects.com/en/1.1.x/">https://flask.palletsprojects.com/en/1.1.x/</a></li>
+<li><code>2.0.x</code> 版本的文档：<a href="https://flask.palletsprojects.com/en/2.0.x/">https://flask.palletsprojects.com/en/2.0.x/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="文件"><a class="header" href="#文件">文件</a></h1>
+<p><a href="https://flask.palletsprojects.com/en/1.1.x/">flask 1.1.x</a> 版本上传的文件对象 <a href="https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/">file</a> 的类为 <code>werkzeug.datastructures.FileStorage</code>, 参考: <a href="https://werkzeug.palletsprojects.com/en/2.0.x/datastructures/#werkzeug.datastructures.FileStorage">FileStorage</a></p>
 
                     </main>
 

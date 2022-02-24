@@ -21,3 +21,21 @@ Python读写Excel格式的数据参考：<https://www.python-excel.org/>
 - [xlrd]: 从旧 Excel 文件（即：.xls）中读取数据和格式信息
 - [xlwt]: 将数据和格式信息写入旧版 Excel 文件（即：.xls）
 - [xlutils]: 收集了需要xlrd和的实用程序xlwt，包括复制和修改或过滤现有 Excel 文件的能力。
+
+## 常见问题
+
+1. 转换Excel的float类型的时间
+
+    参考：<https://stackoverflow.com/questions/32430679/how-to-read-dates-using-xlrd>
+
+    ```python
+    import datetime
+    import xlrd
+
+    book = xlrd.open_workbook("myexcelfile.xls")
+    sh = book.sheet_by_index(0)
+    a1 = sh.cell_value(rowx=0, colx=0)
+    a1_as_datetime = datetime.datetime(*xlrd.xldate_as_tuple(a1, book.datemode))
+    
+    print 'datetime: %s' % a1_as_datetime
+    ```
