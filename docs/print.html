@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item affix "><a href="tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="report/docx.html">Docx</a></li><li class="chapter-item "><a href="report/excel.html">Excel</a></li></ol></li><li class="chapter-item "><a href="web/index.html">WEB框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/index.html">flask</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/file.html">文件</a></li></ol></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item affix "><a href="tutorial.html">简介</a></li><li class="spacer"></li><li class="chapter-item "><div>加密</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="encryption/pycrypto.html">crypto</a></li></ol></li><li class="chapter-item "><div>报告</div><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="report/docx.html">Docx</a></li><li class="chapter-item "><a href="report/excel.html">Excel</a></li></ol></li><li class="chapter-item "><a href="web/index.html">WEB框架</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/index.html">flask</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="web/flask/file.html">文件</a></li></ol></li></ol></li><li class="chapter-item "><a href="other/index.html">其他</a><a class="toggle"><div>❱</div></a></li><li><ol class="section"><li class="chapter-item "><a href="other/functions.html">函数</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -319,6 +319,75 @@ print 'datetime: %s' % a1_as_datetime
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="文件"><a class="header" href="#文件">文件</a></h1>
 <p><a href="https://flask.palletsprojects.com/en/1.1.x/">flask 1.1.x</a> 版本上传的文件对象 <a href="https://flask.palletsprojects.com/en/1.1.x/patterns/fileuploads/">file</a> 的类为 <code>werkzeug.datastructures.FileStorage</code>, 参考: <a href="https://werkzeug.palletsprojects.com/en/2.0.x/datastructures/#werkzeug.datastructures.FileStorage">FileStorage</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="其他"><a class="header" href="#其他">其他</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><ul>
+<li><a href="other/functions.html#%E5%87%BD%E6%95%B0">函数</a>
+<ul>
+<li><a href="other/functions.html#%E4%B8%BA%E4%BD%95%E8%A6%81%E7%94%A8sysexit%E9%80%80%E5%87%BA">为何要用sys.exit()退出？</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="函数"><a class="header" href="#函数">函数</a></h1>
+<h2 id="为何要用sysexit退出"><a class="header" href="#为何要用sysexit退出">为何要用sys.exit()退出？</a></h2>
+<p>原文: <a href="https://www.pynote.net/archives/1036">为何要用sys.exit()退出？</a></p>
+<p>Python有4个不同的退出程序的函数，<code>exit()</code>，<code>quit()</code>，<code>os._exit()</code>和本文要介绍的<code>sys.exit()</code>。</p>
+<p><code>exit()</code>和<code>quit()</code>是一样的，它俩的功能基本上与<code>sys.exit()</code>一样，只有<code>os._exit()</code>有些简单粗暴。</p>
+<p><strong>exit和quit函数</strong></p>
+<p>这两个函数的作用，就是直接退出程序，可以带一个参数作为程序的返回码，如果不带参数，默认就是返回0.</p>
+<pre><code class="language-python">xinlin@ubuntu:~/test$ python3 -q
+&gt;&gt;&gt; exit(111)
+xinlin@ubuntu:~/test$ echo $?
+111
+xinlin@ubuntu:~/test$ python3 -q
+&gt;&gt;&gt; quit(222)
+xinlin@ubuntu:~/test$ echo $?
+222
+xinlin@ubuntu:~/test$ python3 -q
+&gt;&gt;&gt; exit()
+xinlin@ubuntu:~/test$ echo $?
+0
+xinlin@ubuntu:~/test$ python3 -q
+&gt;&gt;&gt; quit()
+xinlin@ubuntu:~/test$ echo $?
+0
+</code></pre>
+<p>这两个函数一般在交互式的python解释器中使用。其实它俩也会抛出<code>SystemExit异常</code>，因此说跟<code>sys.exit()</code>一样。</p>
+<p><strong>sys.exit()函数</strong></p>
+<p><code>sys模块</code>的<code>exit</code>函数，通过抛出一个<code>SystemExit异常</code>来尝试结束程序，Python代码可以捕获这个异常来进行一些程序退出前的清理工作，也可以不退出程序。</p>
+<p><code>sys.exit</code>函数同样可以带一个参数来作为程序的退出码，默认是<code>0</code>.</p>
+<pre><code class="language-python">&gt;&gt;&gt; import sys
+&gt;&gt;&gt; try:
+...     sys.exit(101)
+... except SystemExit as e:
+...     print(repr(e))
+...     print(str(e))
+...
+SystemExit(101)
+101
+&gt;&gt;&gt;
+</code></pre>
+<p>看起来使用<code>str()</code>函数在<code>except</code>分支获取返回码，比较判断不同的返回码，并做响应的清理动作，是比较方便的。另外一个细节，上面这段代码在Python解释器中执行，因为异常被捕获，所以不会导致解释器退出！</p>
+<p>捕获了<code>sys.exit()</code>函数抛出的异常，处理之后，还要程序继续退出，就需要直接使用<code>exit</code>或<code>quit</code>函数。实践中，完整的使用<code>sys.exit</code>函数的逻辑应该是如下这样的代码：</p>
+<pre><code class="language-python">import sys
+
+def main():
+    sys.exit(123)
+    return
+
+if __name__ == '__main__':
+    try:
+        main()
+    except SystemExit as e:
+        if str(e) == '123':
+            print('---123---')
+            exit(123)
+</code></pre>
+<p>一般在<code>python</code>脚本中都选择使用<code>sys.exit</code>函数退出程序，可以有个异常捕获机制来做清理扫尾的工作，程序会更加灵活健壮。</p>
+<p><strong>os._exit()函数</strong></p>
+<p>这个函数简单粗暴，就是直接退出python解释器，后面的代码都不执行了！一般程序不推荐使用这种退出方式。</p>
+<p>补充一个细节：</p>
+<p><strong>在python线程中，使用<code>sys.exit</code>（包括<code>exit</code>和<code>quit</code>），都只能实现退出子线程，而不能退出主线程；</strong></p>
+<p><strong>如果在子线程中调用<code>os._exit</code>，可以实现整个程序的退出。</strong></p>
 
                     </main>
 
@@ -339,7 +408,7 @@ print 'datetime: %s' % a1_as_datetime
 
                 <!-- Livereload script (if served using the cli tool) -->
         <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3003/__livereload");
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
             socket.onmessage = function (event) {
                 if (event.data === "reload") {
                     socket.close();
