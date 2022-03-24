@@ -1,6 +1,6 @@
 - [crypto](#crypto)
   - [背景知识](#背景知识)
-  - [python相关包](#python相关包)
+  - [PyCrypto - Python 密码学工具包](#pycrypto---python-密码学工具包)
   - [老版本AES的ECB模型加密示例](#老版本aes的ecb模型加密示例)
   - [使用cryptography进行AES-256-ECB加密](#使用cryptography进行aes-256-ecb加密)
 
@@ -38,22 +38,39 @@
 
     解密变换为：`M=C^d mod n`。
 
-## python相关包
+## PyCrypto - Python 密码学工具包
 
 > **Python 密码学工具包 (pycrypto)**
 >
-> pycrypto pypi: <https://pypi.org/project/pycrypto/>
+> **注意**: 该软件不再维护。参考:  <https://www.pycrypto.org/>
+>
+> **pycrypto** 历史链接
+>
+> ⚠️ PyCrypto 2.x 未维护。已过时且包含安全漏洞。以下内容仅供参考。
+>
+> - [API 文档](https://www.pycrypto.org/api/)（epydoc 输出）
+> - [PyCrypto 概述](https://www.pycrypto.org/doc/)（从[Doc/pycrypto.rst 构建](https://github.com/pycrypto/pycrypto/blob/master/Doc/pycrypt.rst)）
+> - [源代码存储库](https://github.com/pycrypto/pycrypto) (GitHub)
+> - [发布压缩包](https://www.pycrypto.org/pub/dlitz/crypto/pycrypto/)
+> - [邮件列表存档](https://lists.dlitz.net/pipermail/pycrypto/)（[本地快照](https://www.pycrypto.org/pipermail/pycrypto/)）
+> - [Pypi](https://pypi.org/project/pycrypto/)
 >
 > 这是安全散列函数（如 SHA256 和 RIPEMD160）和各种加密算法（AES、DES、RSA、ElGamal 等）的集合。
 >
-> > **注意**: 该软件不再维护。参考:  <https://www.pycrypto.org/>
-> >
-> >　PyCrypto 2.x 未维护、已过时且包含安全漏洞。
-> >
-> >　请选择以下选项之一：
-> >
-> > - Cryptography: <https://cryptography.io/>
-> > - PyCryptodome: <https://www.pycryptodome.org/>
+> **请选择以下选项之一**：
+>
+> - Cryptography: <https://cryptography.io/>
+>   - 推荐用于新应用
+>   - 较新的 API，陷阱较少。
+>   - [API 文档](https://cryptography.io/)
+>   - [GitHub](https://github.com/pyca/cryptography)
+>   - [Pypi](https://pypi.org/project/cryptography)
+> - PyCryptodome: <https://www.pycryptodome.org/>
+>   - 推荐用于依赖 PyCrypto 的现有软件。
+>   - PyCrypto 的分叉。大多数应用程序应该在未经修改的情况下运行。
+>   - [API 文档](https://www.pycryptodome.org/)
+>   - [GitHub](https://github.com/Legrandin/pycryptodome)
+>   - [Pypi](https://pypi.org/project/pycryptodome)
 
 ## 老版本AES的ECB模型加密示例
 
@@ -90,6 +107,22 @@ class AesEncry(object):
         cipher_text = self.cryptos.encrypt(text.encode("utf-8"))
         # 因为AES加密后的字符串不一定是ascii字符集的，输出保存可能存在问题，所以这里转为base64进制字符串
         return base64.encodebytes(cipher_text).decode("utf-8")
+
+
+## 对应的较新的使用 PyCryptodome 的加密方式
+
+from Crypto.Util.Padding import pad, unpad
+from Crypto.Cipher import AES
+BLOCK_SIZE = 32 # Bytes
+ 
+key = 'abcdefghijklmnop'
+cipher = AES.new(key.encode('utf8'), AES.MODE_ECB)
+msg = cipher.encrypt(pad(b'hello', BLOCK_SIZE))
+print(msg.hex())
+
+decipher = AES.new(key.encode('utf8'), AES.MODE_ECB)
+msg_dec = decipher.decrypt(msg)
+print(unpad(msg_dec, BLOCK_SIZE))
 
 ```
 
