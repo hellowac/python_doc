@@ -1,2 +1,4 @@
 book
+venv
+site
 **/*.DS_store

@@ -1,0 +1,22 @@
+site_name: 我的python笔记
+
+# 配置主题，在mkdocs.yml文件下
+theme:
+  name: material
+  language: zh
+
+nav:
+  - 首页: index.md
+  - 加密:
+    - crypto: encryption/pycrypto.md
+  - 报告:
+    - Docx: report/docx.md
+    - Excel: report/excel.md
+  - WEB框架: 
+    - flask: web/flask/file.md
+  - 开发服务组件:
+    - zookeeper: component/zookeeper.md
+    - nginx: component/nginx.md
+    - supervisor: component/supervisor.md
+  - 其他: 
+    - Python函数: other/functions.md

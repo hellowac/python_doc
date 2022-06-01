@@ -1,9 +1,3 @@
-- [crypto](#crypto)
-  - [背景知识](#背景知识)
-  - [PyCrypto - Python 密码学工具包](#pycrypto---python-密码学工具包)
-  - [老版本AES的ECB模型加密示例](#老版本aes的ecb模型加密示例)
-  - [使用cryptography进行AES-256-ECB加密](#使用cryptography进行aes-256-ecb加密)
-
 # crypto
 
 ## 背景知识
