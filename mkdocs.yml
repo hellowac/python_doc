@@ -15,6 +15,7 @@ nav:
   - WEB框架: 
     - flask: web/flask/file.md
   - 开发服务组件:
+    - clickhouse: component/clickhouse.md
     - zookeeper: component/zookeeper.md
     - nginx: component/nginx.md
     - supervisor: component/supervisor.md
